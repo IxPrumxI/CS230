@@ -73,7 +73,10 @@ public class Main {
                         } else {
                             System.out.println("Book not found");
                         }
-                    } else if (searchOption != 5) {
+                    } else if(searchOption == 5) {
+                        System.out.println("Exiting...");
+                        System.exit(0);
+                    } else {
                         System.out.println("Invalid option");
                     }
                 }
@@ -85,7 +88,7 @@ public class Main {
                     System.out.println("5. Exit");
                     int searchOption = scanner.nextInt();
                     if (searchOption == 1) {
-                        library.listClients();
+                        System.out.println(library.listClients());
                     } else if (searchOption == 2) {
                         System.out.println("Enter the name to search:");
                         String search = scanner.next();
@@ -106,7 +109,12 @@ public class Main {
                         } else {
                             System.out.println("Client not found");
                         }
-                    } else if(searchOption != 5) System.out.println("Invalid option");
+                    } else if(searchOption == 5) {
+                        System.out.println("Exiting...");
+                        System.exit(0);
+                    } else {
+                        System.out.println("Invalid option");
+                    }
                 }
                 case 3 -> {
                     Client client;
@@ -181,6 +189,9 @@ public class Main {
                             currentClient = null;
                             System.out.println("Successfully logged out");
                         } else if (choice == 5) {
+                            System.out.println("Exiting...");
+                            System.exit(0);
+                        } else {
                             System.out.println("Invalid option");
                         }
                     } else {
