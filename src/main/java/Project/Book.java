@@ -6,25 +6,16 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private boolean isAvailable;
     private int availableCopies;
 //    private Client[] borrowers = new Client[Main.MAX_CLIENTS]; // This was causing an issue because borrowers.length was always 100
     private Client[] borrowers = new Client[0]; // This is a better approach, we will resize the array when needed
-
-    public Book(String title, String author, int availableCopies, boolean isAvailable) {
-        this.id = currentId++;
-        this.title = title;
-        this.author = author;
-        this.availableCopies = availableCopies;
-        this.isAvailable = isAvailable;
-    }
 
     public Book(String title, String author, int availableCopies) {
         this.id = currentId++;
         this.title = title;
         this.author = author;
         this.availableCopies = availableCopies;
-        this.isAvailable = true;
+        // ,
     }
 
     public Book(String title, String author) {
@@ -32,7 +23,6 @@ public class Book {
         this.title = title;
         this.author = author;
         this.availableCopies = 1;
-        this.isAvailable = true;
     }
 
     public int getId() {
