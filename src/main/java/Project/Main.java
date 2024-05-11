@@ -27,15 +27,18 @@ public class Main {
 
     public static void cli() {
         try {
-            System.out.println("Choose an option:");
-            System.out.println("1. Manage books (list all books, search by title, register a new book, remove a book)");
-            System.out.println("2. Manage clients (list all clients, search by name or id, register a new client, remove a client)");
-            System.out.println("3. Login as a client (list all books borrowed, borrow a book, return a book)");
-            System.out.println("4. Exit");
 
             Scanner scanner = new Scanner(System.in);
-            int option = scanner.nextInt();
+            int option;
             if(currentClient != null) option = 3; // To skip the login process
+            else {
+                System.out.println("Choose an option:");
+                System.out.println("1. Manage books (list all books, search by title, register a new book, remove a book)");
+                System.out.println("2. Manage clients (list all clients, search by name or id, register a new client, remove a client)");
+                System.out.println("3. Login as a client (list all books borrowed, borrow a book, return a book)");
+                System.out.println("4. Exit");
+                option = scanner.nextInt();
+            };
             // I tried a while loop but it gets stuck.
             switch (option) {
                 case 1 -> { // Manage books (list all books and their availability with the option to search by title, remove a book)
@@ -107,17 +110,21 @@ public class Main {
                     } else if(searchOption != 5) System.out.println("Invalid option");
                 }
                 case 3 -> {
-                    System.out.println("Login as a client");
-                    System.out.println("Enter the id of the client:");
-                    int id = scanner.nextInt();
-                    Client client = library.getClient(id);
+                    Client client;
+                    if (currentClient == null) {
+                        System.out.println("Enter the id of the client:");
+                        int id = scanner.nextInt();
+                        client = library.getClient(id);
+                    } else {
+                        client = currentClient;
+                    }
                     if (client != null) {
                         currentClient = client;
                         System.out.println("Welcome " + client.getName());
                         System.out.println("1. List all books borrowed");
                         System.out.println("2. Borrow a book");
                         System.out.println("3. Return a book");
-                        System.out.println("4. Logout");
+                        System.out.println("4. Logout (return to the main menu)");
                         System.out.println("5. Exit");
                         int choice = scanner.nextInt();
                         if (choice == 1) {
