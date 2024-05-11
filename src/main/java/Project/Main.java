@@ -17,7 +17,7 @@ public class Main {
         // The menu should have the following options:
         // 1. Manage books (list all books and their availability with the option to search by title)
         // 2. Manage clients (list all clients and the books they borrowed with the option to search by name or id)
-        // 3. Login as a client (borrow a book, return a book)
+        // 3. Login as a client (list all books borrowed, borrow a book, return a book)
         // 4. Exit
         // The menu should keep asking for options until the user selects the exit option.
 
@@ -38,7 +38,7 @@ public class Main {
                 System.out.println("3. Login as a client (list all books borrowed, borrow a book, return a book)");
                 System.out.println("4. Exit");
                 option = scanner.nextInt();
-            };
+            }
             // I tried a while loop but it gets stuck.
             switch (option) {
                 case 1 -> { // Manage books (list all books and their availability with the option to search by title, remove a book)
@@ -119,8 +119,8 @@ public class Main {
                         client = currentClient;
                     }
                     if (client != null) {
-                        currentClient = client;
-                        System.out.println("Welcome " + client.getName());
+                        if(currentClient != null) System.out.println("Welcome " + client.getName());
+                        else currentClient = client;
                         System.out.println("1. List all books borrowed");
                         System.out.println("2. Borrow a book");
                         System.out.println("3. Return a book");
