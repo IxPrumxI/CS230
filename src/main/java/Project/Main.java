@@ -27,7 +27,6 @@ public class Main {
 
     public static void cli() {
         try {
-
             Scanner scanner = new Scanner(System.in);
             int option;
             if(currentClient != null) option = 3; // To skip the login process
